@@ -1,0 +1,55 @@
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.left = left
+        self.right = right
+        self.value = value
+
+
+    def __str__(self):
+        return str(self.value)
+
+    def traverse_in_order(self):
+        if self.left:
+            self.left.traverse_in_order()
+
+        print(self.value, end = " ")
+        if self.right:
+            self.right.traverse_in_order()
+
+    def traverse_pre_order(self):
+        print(self.value, end =" ")
+        if self.left:
+            self.left.traverse_pre_order()
+        if self.right:
+            self.right.traverse_pre_order()
+
+
+
+class Tree:
+    def __init__(self, root):
+        self.root = Node(root)
+
+
+
+
+tree = Tree(1)
+tree.root.left = Node(7)
+tree.root.right = Node(9)
+tree.root.left.left = Node(2)
+tree.root.left.right = Node(6)
+tree.root.right.right = Node(9)
+tree.root.right.right.left = Node(5)
+tree.root.left.right.left = Node(5)
+tree.root.left.right.right = Node(11)
+
+# Tree Structure
+
+    #     1
+    #   7    9
+    # 2   6     9
+    #    5 11  5
+
+
+# Preorder Traverse
+# 1 7 2 6 5 11 9 9 5
+tree.root.traverse_pre_order()
